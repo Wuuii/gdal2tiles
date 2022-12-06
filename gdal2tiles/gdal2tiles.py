@@ -1061,7 +1061,7 @@ def create_overview_tiles(tile_job_info, output_folder, options):
     tile_driver = tile_job_info.tile_driver
     out_driver = gdal.GetDriverByName(tile_driver)
 
-    tilebands = tile_job_info.nb_data_bands
+    tilebands = tile_job_info.nb_data_bands + 1
 
     # Usage of existing tiles: from 4 underlying tiles generate one as overview.
 
@@ -1336,8 +1336,8 @@ class GDAL2Tiles(object):
 
         # Tile format
         self.tilesize = options.tile_size
-        self.tiledriver = 'WEBP'
-        self.tileext = 'webp'
+        self.tiledriver = 'PNG'
+        self.tileext = 'png'
         self.tmp_dir = tempfile.mkdtemp()
         self.tmp_vrt_filename = os.path.join(self.tmp_dir, str(uuid4()) + '.vrt')
 
